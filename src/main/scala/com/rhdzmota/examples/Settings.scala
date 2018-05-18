@@ -8,7 +8,7 @@ object Settings {
   object Http {
     private val http: Config = app.getConfig("http")
     val host: String = http.getString("host")
-    val port: Int = http.getInt("port")
+    val port: Int = sys.env.getOrElse("PORT", http.getString("port")).toInt
   }
 
 }
