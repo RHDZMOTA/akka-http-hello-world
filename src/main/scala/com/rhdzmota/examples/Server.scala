@@ -11,7 +11,7 @@ import scala.concurrent.ExecutionContext
 
 object Server {
 
-  val route: Route = pathPrefix("v1") {
+  val route: Route = pathPrefix("v1.0.0") {
     HelloWorld.route
   }
 
