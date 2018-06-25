@@ -4,7 +4,7 @@ import akka.http.scaladsl.model.{ContentTypes, HttpEntity}
 import akka.http.scaladsl.server.Directives._
 import akka.http.scaladsl.server.{Route, StandardRoute}
 import com.rhdzmota.examples.model.Greeting
-import com.rhdzmota.examples.service.{English, French, Spanish}
+import com.rhdzmota.examples.service.HelloWorld._
 
 case object HelloWorld {
 
@@ -14,21 +14,20 @@ case object HelloWorld {
   def jsonResponse(greeting: Greeting): StandardRoute =
     complete(HttpEntity(ContentTypes.`application/json`, greeting.toJson.toString()))
 
-  val route: Route = pathPrefix("hello") {
-    defaultResponsePathEnd() ~
-    htmlRoute ~
-    jsonRoute
-  }
-
   val jsonRoute: Route = pathPrefix("json") {
     defaultResponsePathEnd() ~
     langRoute(jsonResponse)
   }
 
-
   val htmlRoute: Route = pathPrefix("html") {
     defaultResponsePathEnd(htmlTextResponse) ~
     langRoute(htmlTextResponse)
+  }
+
+  val route: Route = pathPrefix("hello") {
+    defaultResponsePathEnd() ~
+      htmlRoute ~
+      jsonRoute
   }
 
   def defaultResponsePathEnd(generateResponse: Greeting => StandardRoute = jsonResponse): Route = pathEnd {

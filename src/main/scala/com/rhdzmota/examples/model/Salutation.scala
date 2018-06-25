@@ -5,17 +5,24 @@ sealed trait Salutation {
   def lang: Lang
 }
 
-case object Hello extends Salutation {
-  val lang: Lang = En
-  override def toString: String = "Hello World!"
-}
+object Salutation {
 
-case object Hola extends Salutation {
-  val lang: Lang = Es
-  override def toString: String = "¡Hola mundo!"
-}
+  case object Hello extends Salutation {
+    val lang: Lang = Lang.En
 
-case object Bonjour extends Salutation {
-  val lang: Lang = Fr
-  override def toString: String = "Bonjour monde!"
+    override def toString: String = "Hello World!"
+  }
+
+  case object Hola extends Salutation {
+    val lang: Lang = Lang.Es
+
+    override def toString: String = "¡Hola mundo!"
+  }
+
+  case object Bonjour extends Salutation {
+    val lang: Lang = Lang.Fr
+
+    override def toString: String = "Bonjour monde!"
+  }
+
 }
