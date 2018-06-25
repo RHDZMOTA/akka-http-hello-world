@@ -4,7 +4,7 @@ This is an Akka HTTP hello-world example compatible with Heroku.
 
 ## Usage
 
-To run locally (at `0.0.0.0:8080/v1/hello`):
+To run locally (at `0.0.0.0:8080/v1.0.0/hello`):
 1. Compile the app: `sbt compile stage`
 2. Run: `./target/universal/stage/bin`
 
