@@ -11,9 +11,11 @@ import scala.concurrent.ExecutionContext
 
 object Server {
 
-  val route: Route = pathPrefix("v1") {
-    HelloWorld.route
-  }
+  val route: Route = 
+    HelloWorld.route ~
+    pathPrefix(API.currentVersion) {
+      HelloWorld.route
+    }
 
   def main(args: Array[String]): Unit = {
     implicit val actorSystem: ActorSystem = ActorSystem()

@@ -1,19 +1,23 @@
 package com.rhdzmota.examples.service
 
-import com.rhdzmota.examples.model.{Bonjour, Greeting, Hello, Hola}
+import com.rhdzmota.examples.model.{Greeting, Salutation}
 
 sealed trait HelloWorld {
   def getGreetings: Greeting
 }
 
-case object English extends HelloWorld {
-  override val getGreetings: Greeting = Greeting.fromSalutation(Hello)
-}
+object HelloWorld {
 
-case object Spanish extends HelloWorld {
-  override val getGreetings: Greeting = Greeting.fromSalutation(Hola)
-}
+  case object English extends HelloWorld {
+    override val getGreetings: Greeting = Greeting.fromSalutation(Salutation.Hello)
+  }
 
-case object French extends HelloWorld {
-  override val getGreetings: Greeting = Greeting.fromSalutation(Bonjour)
+  case object Spanish extends HelloWorld {
+    override val getGreetings: Greeting = Greeting.fromSalutation(Salutation.Hola)
+  }
+
+  case object French extends HelloWorld {
+    override val getGreetings: Greeting = Greeting.fromSalutation(Salutation.Bonjour)
+  }
+
 }
